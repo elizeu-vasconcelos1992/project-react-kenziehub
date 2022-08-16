@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderDash = styled.header`
   width: 100%;
-  height: 10%;
+  height: 5rem;
   padding: 0 10rem 0 10rem;
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,7 @@ export const HeaderDash = styled.header`
   }
 
   @media (max-width: 548px) {
-    height: 25%;
+    height: 7rem;
     padding: 0;
     flex-direction: column;
     justify-content: space-around;

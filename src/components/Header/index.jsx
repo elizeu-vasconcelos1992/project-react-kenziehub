@@ -1,19 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import logo from "../../assets/logo.png";
+import { UserContext } from "../../context/UserContext";
 import { HeaderDash } from "./style";
 
 function Header() {
-  const navigate = useNavigate();
-
-  function pageLogin() {
-    navigate("/", { replace: true });
-    localStorage.clear();
-  }
+  const { logout } = useContext(UserContext);
 
   return (
     <HeaderDash>
       <img src={logo} alt="logomarca Kenzie hub" />
-      <button onClick={pageLogin}>Sair</button>
+      <button onClick={logout}>Sair</button>
     </HeaderDash>
   );
 }

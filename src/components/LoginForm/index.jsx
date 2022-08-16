@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Form } from "./styles";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
-function LoginForm({ kenzieApi }) {
+function LoginForm() {
+  const { kenzieApiLogin } = useContext(UserContext);
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Email obrigatório"),
     password: yup.string().required("Senha obrigatória"),
@@ -18,7 +21,7 @@ function LoginForm({ kenzieApi }) {
   });
 
   function formLogin(data) {
-    kenzieApi(data);
+    kenzieApiLogin(data);
   }
 
   return (

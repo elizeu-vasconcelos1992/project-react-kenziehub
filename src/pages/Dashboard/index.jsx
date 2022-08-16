@@ -7,18 +7,15 @@ import { useEffect } from "react";
 
 function Dashboard() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("userInfo"));
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    function pageLogin() {
-      if (!user) {
-        navigate("/", { replace: true });
-      }
+    if (!token) {
+      navigate("/", { replace: true });
     }
-    pageLogin();
-  }, [navigate, user]);
+  }, [token, navigate]);
 
-  if (user) {
+  if (token) {
     return (
       <motion.div
         initial={{ scale: 0.5 }}
@@ -28,7 +25,7 @@ function Dashboard() {
       >
         <Container>
           <Header />
-          <Main user={user} />
+          <Main />
         </Container>
       </motion.div>
     );

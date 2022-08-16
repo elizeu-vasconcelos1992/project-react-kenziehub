@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 23.063rem;
   height: 34.875rem;
   font-family: "Inter";
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
