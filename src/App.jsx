@@ -1,18 +1,15 @@
 import "./App.css";
-import TechsProvider from "./context/TechsContext";
-import UserProvider from "./context/UserContext";
+import GlobalProvider from "./context";
 
 import Routing from "./routes";
 
 function App() {
   return (
-    <UserProvider>
-      <TechsProvider>
-        <div className="App">
-          <Routing />
-        </div>
-      </TechsProvider>
-    </UserProvider>
+    <GlobalProvider>
+      <div className="App">
+        <Routing />
+      </div>
+    </GlobalProvider>
   );
 }
 
