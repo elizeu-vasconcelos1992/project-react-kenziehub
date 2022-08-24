@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { MainDash } from "./styles";
 import ModalTechRegister from "../ModalTechRegister";
 import { AiOutlineEdit } from "react-icons/ai";
-import { ImEye } from "react-icons/im";
+import { ImEyePlus } from "react-icons/im";
+import { ImEyeMinus } from "react-icons/im";
 import { TechsContext } from "../../context/TechsContext";
 import ModalTechUpdate from "../ModalTechUpdate";
 import { WorksContext } from "../../context/WorksContext";
@@ -11,6 +12,8 @@ import ModalWorkRegister from "../ModalWorkRegister";
 import ModalWorkUpdate from "../ModalWorkUpdate";
 
 function Main() {
+  const [imgId, setImgId] = useState<string>("");
+
   const { user } = useContext(UserContext);
   const {
     modalWorkRegister,
@@ -71,7 +74,7 @@ function Main() {
         </div>
         <div className="div-contend-works">
           <div className="div-techs">
-            <h4>Experiência</h4>
+            <h4>Experiências</h4>
             <button onClick={() => setModalWorkRegister(true)}>+</button>
           </div>
           <ul>
@@ -80,9 +83,20 @@ function Main() {
                 user.works?.map((item) => (
                   <li key={item.id} className="works-container">
                     <details>
-                      <summary>
+                      <summary
+                        onClick={() =>
+                          imgId === item.id ? setImgId("") : setImgId(item.id)
+                        }
+                      >
                         <p className="work-title">{item.title}</p>
-                        <ImEye size={20} />
+                        {imgId === item.id ? (
+                          <ImEyeMinus onClick={() => setImgId("")} size={20} />
+                        ) : (
+                          <ImEyePlus
+                            onClick={() => setImgId(item.id)}
+                            size={20}
+                          />
+                        )}
                       </summary>
                       <p>
                         <span>Descrição:</span> {item.description}
