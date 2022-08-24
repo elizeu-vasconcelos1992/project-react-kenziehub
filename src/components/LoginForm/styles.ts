@@ -33,6 +33,38 @@ export const Form = styled.form`
       font-size: 0.75rem;
       color: #cd3333;
     }
+
+    .div-password {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: inherit;
+      height: 3rem;
+      padding: 0;
+      font-size: 1rem;
+      margin-top: 1.375rem;
+      background: #343b41;
+      border: 0.063rem solid #f8f9fa;
+      border-radius: 0.25rem;
+
+      .input-password {
+        width: 90%;
+        height: 2.8rem;
+        font-size: 1rem;
+        margin: 0;
+        letter-spacing: 0.08rem;
+        background: #343b41;
+        border: none;
+        border-radius: 0.25rem;
+        color: white;
+        outline: none;
+      }
+
+      svg {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
   }
 
   button {

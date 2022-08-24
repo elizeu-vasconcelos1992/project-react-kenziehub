@@ -1,13 +1,69 @@
-import { createContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import api from "../services";
+import { IDataLogin } from "../components/LoginForm";
+import { IInfoRegister } from "../components/RegistrationForm";
 
-export const UserContext = createContext({});
+interface IUserProvider {
+  children: ReactNode;
+}
 
-export default function UserProvider({ children }) {
+export interface ITechs {
+  created_at: string;
+  id: string;
+  status: string;
+  title: string;
+  updated_at: string;
+}
+
+export interface IWorks {
+  created_at: string;
+  deploy_url: string;
+  description: string;
+  id: string;
+  title: string;
+  updated_at: string;
+}
+
+export interface IUser {
+  avatar_url: string;
+  bio: string;
+  contact: string;
+  course_module: string;
+  created_at: string;
+  email: string;
+  id: string;
+  name: string;
+  techs: ITechs[];
+  works: IWorks[];
+}
+
+export interface ILoginResponse {
+  token: string;
+  user: IUser;
+}
+
+interface IUserContext {
+  kenzieApiLogin: (data: IDataLogin) => void;
+  kenzieApiRegistration: (data: IInfoRegister) => void;
+  logout: () => void;
+  user: IUser;
+  setUser: Dispatch<SetStateAction<IUser>>;
+}
+
+export const UserContext = createContext({} as IUserContext);
+
+function UserProvider({ children }: IUserProvider) {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<IUser>({} as IUser);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -16,8 +72,10 @@ export default function UserProvider({ children }) {
         .get("/profile", {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => setUser(res.data))
-        .catch((err) => clearLocalStorage(err));
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err) => clearLocalStorage());
     }
   }, []);
 
@@ -25,7 +83,7 @@ export default function UserProvider({ children }) {
     localStorage.clear();
   }
 
-  function kenzieApiLogin(data) {
+  function kenzieApiLogin(data: IDataLogin) {
     api
       .post("/sessions", data)
       .then((res) => {
@@ -35,7 +93,7 @@ export default function UserProvider({ children }) {
       .finally(loadPage);
   }
 
-  function sucessLogin(info) {
+  function sucessLogin(info: ILoginResponse) {
     setTimeout(() => {
       toast.success("Login realizado com sucesso", { autoClose: 1500 });
       setTimeout(() => {
@@ -48,7 +106,7 @@ export default function UserProvider({ children }) {
     }, 2500);
   }
 
-  function errorLogin(err) {
+  function errorLogin(err: any) {
     err.message === "Network Error"
       ? setTimeout(() => {
           toast.error("Falha na conexão, verique sua internet", {
@@ -68,17 +126,17 @@ export default function UserProvider({ children }) {
     });
   }
 
-  function kenzieApiRegistration(data) {
+  function kenzieApiRegistration(data: IInfoRegister) {
     api
       .post("/users", data)
       .then((res) => {
-        sucessRegister(res);
+        sucessRegister();
       })
       .catch((err) => errorRegister(err))
       .finally(loadPageRegistration);
   }
 
-  function sucessRegister(info) {
+  function sucessRegister() {
     setTimeout(() => {
       toast.success("Redirecionando para o Login", { autoClose: 1500 });
       setTimeout(() => {
@@ -87,7 +145,7 @@ export default function UserProvider({ children }) {
     }, 2500);
   }
 
-  function errorRegister(err) {
+  function errorRegister(err: any) {
     err.response.data.message === "Email already exists"
       ? setTimeout(() => {
           toast.error("Email já cadastrado", { autoClose: 2100 });
@@ -111,7 +169,6 @@ export default function UserProvider({ children }) {
       position: "top-center",
     });
     setTimeout(() => {
-      setUser(null);
       localStorage.clear();
       navigate("/", { replace: true });
     }, 2500);
@@ -136,3 +193,5 @@ export default function UserProvider({ children }) {
     </UserContext.Provider>
   );
 }
+
+export default UserProvider;

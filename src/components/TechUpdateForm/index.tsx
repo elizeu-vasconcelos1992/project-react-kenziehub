@@ -5,6 +5,13 @@ import { FormUpdate } from "./styles";
 import { useContext } from "react";
 import { TechsContext } from "../../context/TechsContext";
 
+interface ITechDataUpdate {
+  title: string;
+  status: string;
+}
+
+export type IInfoDataUpdate = Omit<ITechDataUpdate, "title">;
+
 function TechUpdateForm() {
   const statusTech = ["Iniciante", "Intermediário", "Avançado"];
 
@@ -19,11 +26,11 @@ function TechUpdateForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ITechDataUpdate>({
     resolver: yupResolver(schema),
   });
 
-  function formTechUpdate(data) {
+  function formTechUpdate(data: ITechDataUpdate) {
     const { status } = data;
     const info = { status: status };
     techStatusUpdate(techId, info);

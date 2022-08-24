@@ -2,11 +2,20 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Form } from "./styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
+import { ImEyePlus } from "react-icons/im";
+import { ImEyeMinus } from "react-icons/im";
+
+export interface IDataLogin {
+  email: string;
+  password: string;
+}
 
 function LoginForm() {
   const { kenzieApiLogin } = useContext(UserContext);
+  const [inputType, setInputType] = useState<string>("password");
+
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Email obrigatório"),
     password: yup.string().required("Senha obrigatória"),
@@ -16,11 +25,11 @@ function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IDataLogin>({
     resolver: yupResolver(schema),
   });
 
-  function formLogin(data) {
+  function formLogin(data: IDataLogin) {
     kenzieApiLogin(data);
   }
 
@@ -34,7 +43,18 @@ function LoginForm() {
 
       <label>
         Senha
-        <input type="password" {...register("password")} />
+        <div className="div-password">
+          <input
+            type={inputType}
+            className="input-password"
+            {...register("password")}
+          />
+          {inputType === "password" ? (
+            <ImEyePlus size={20} onClick={() => setInputType("text")} />
+          ) : (
+            <ImEyeMinus size={20} onClick={() => setInputType("password")} />
+          )}
+        </div>
         <p>{errors.password?.message}</p>
       </label>
       <button type="submit">Entrar</button>

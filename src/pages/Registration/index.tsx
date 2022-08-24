@@ -1,25 +1,24 @@
 import logo from "../../assets/logo.png";
-import LoginForm from "../../components/LoginForm";
+import RegistrationForm from "../../components/RegistrationForm";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { Container } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../context/UserContext";
 
-function Login() {
+function Registration() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-  const [userLog, setUserLog] = useState(false);
+  const token = localStorage.getItem("token");
+  const [userLog, setUserLog] = useState<boolean>(false);
 
-  function pageRegistration() {
-    navigate("/registration", { replace: true });
+  function pageLogin() {
+    navigate("/", { replace: true });
   }
 
   useEffect(() => {
     if (userLog) {
-      toast.success("Você ja está logado", {
+      toast.success("Você já está logado", {
         autoClose: 1800,
         transition: Zoom,
       });
@@ -30,10 +29,10 @@ function Login() {
   }, [navigate, userLog]);
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       setUserLog(true);
     }
-  }, [user]);
+  }, [token]);
 
   return (
     <motion.div
@@ -43,14 +42,16 @@ function Login() {
       transition={{ duration: 2 }}
     >
       <Container>
-        <img src={logo} alt="logomarca Kenzie hub" />
-        <div>
-          <h3>Login</h3>
-          <LoginForm />
-          <span>Ainda não possui uma conta?</span>
-          <button className="button-register" onClick={pageRegistration}>
-            Cadastre-se
+        <div className="div-header">
+          <img src={logo} alt="logomarca Kenzie hub" />
+          <button className="button-previous" onClick={pageLogin}>
+            Voltar
           </button>
+        </div>
+        <div className="div-form">
+          <h3>Crie sua conta</h3>
+          <span>Rápida e grátis, vamos nessa</span>
+          <RegistrationForm />
         </div>
       </Container>
       <ToastContainer />
@@ -58,4 +59,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Registration;

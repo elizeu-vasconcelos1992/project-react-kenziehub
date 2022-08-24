@@ -5,6 +5,18 @@ import { Form } from "./styles";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
+interface IDataRegister {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  bio: string;
+  contact: string;
+  course_module: string;
+}
+
+export type IInfoRegister = Omit<IDataRegister, "confirmPassword">;
+
 function RegistrationForm() {
   const { kenzieApiRegistration } = useContext(UserContext);
   const schema = yup.object().shape({
@@ -33,11 +45,11 @@ function RegistrationForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IDataRegister>({
     resolver: yupResolver(schema),
   });
 
-  function formRegistration(data) {
+  function formRegistration(data: IDataRegister) {
     const { email, password, name, bio, contact, course_module } = data;
     const info = { email, password, name, bio, contact, course_module };
 

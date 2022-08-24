@@ -5,6 +5,13 @@ import { Form } from "./styles";
 import { useContext } from "react";
 import { TechsContext } from "../../context/TechsContext";
 
+interface ITechDataRegister {
+  title: string;
+  status: string;
+}
+
+export type IInfoDataRegister = Omit<ITechDataRegister, "title">;
+
 function TechRegisterForm() {
   const { techRegister } = useContext(TechsContext);
 
@@ -16,11 +23,11 @@ function TechRegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ITechDataRegister>({
     resolver: yupResolver(schema),
   });
 
-  function formTechRegister(data) {
+  function formTechRegister(data: ITechDataRegister) {
     techRegister(data);
   }
 
