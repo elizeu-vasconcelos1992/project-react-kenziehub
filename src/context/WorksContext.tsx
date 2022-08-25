@@ -22,6 +22,8 @@ interface IWorkContext {
   modalWorkUpdate: boolean;
   workUpdateData: IFormWorkRegister;
   workId: string;
+  effectModal: boolean;
+  setEffectModal: Dispatch<SetStateAction<boolean>>;
   setModalWorkRegister: Dispatch<SetStateAction<boolean>>;
   setModalWorkUpdate: Dispatch<SetStateAction<boolean>>;
   setWorkUpdateData: Dispatch<SetStateAction<IFormWorkRegister>>;
@@ -37,6 +39,7 @@ function WorksProvider({ children }: IWorksProvider) {
   const [modalWorkRegister, setModalWorkRegister] = useState<boolean>(false);
   const [modalWorkUpdate, setModalWorkUpdate] = useState<boolean>(false);
   const [workId, setWorkId] = useState<string>("");
+  const [effectModal, setEffectModal] = useState<boolean>(true);
   const [workUpdateData, setWorkUpdateData] = useState<IFormWorkRegister>(
     {} as IFormWorkRegister
   );
@@ -161,6 +164,8 @@ function WorksProvider({ children }: IWorksProvider) {
         workId,
         setWorkId,
         workUpdate,
+        effectModal,
+        setEffectModal,
       }}
     >
       {children}

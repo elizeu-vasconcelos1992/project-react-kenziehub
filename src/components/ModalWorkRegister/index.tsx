@@ -5,16 +5,23 @@ import WorkRegisterForm from "../WorkRegisterForm";
 import { WorksContext } from "../../context/WorksContext";
 
 function ModalWorkRegister() {
-  const { setModalWorkRegister } = useContext(WorksContext);
+  const { setModalWorkRegister, effectModal, setEffectModal } =
+    useContext(WorksContext);
 
   return (
-    <WorkContainer>
+    <WorkContainer effectModal={effectModal}>
       <div className="div-container">
         <div className="div-header">
           <span>Cadastrar Experiência</span>
           <AiOutlineCloseCircle
             size={22}
-            onClick={() => setModalWorkRegister(false)}
+            onClick={() => {
+              setEffectModal(false);
+              setTimeout(() => {
+                setModalWorkRegister(false);
+                setEffectModal(true);
+              }, 900);
+            }}
           />
         </div>
         <WorkRegisterForm />

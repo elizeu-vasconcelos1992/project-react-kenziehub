@@ -23,6 +23,8 @@ interface ITechsContext {
   techTitle: string;
   setTechTitle: Dispatch<SetStateAction<string>>;
   techStatus: string;
+  effectModal: boolean;
+  setEffectModal: Dispatch<SetStateAction<boolean>>;
   setTechStatus: Dispatch<SetStateAction<string>>;
   techStatusUpdate: (id: string, data: IInfoDataUpdate) => void;
 }
@@ -36,6 +38,7 @@ export default function TechsProvider({ children }: ITechsProvider) {
   const [techTitle, setTechTitle] = useState<string>("");
   const [techStatus, setTechStatus] = useState<string>("");
   const [tech, setTech] = useState<boolean>(false);
+  const [effectModal, setEffectModal] = useState<boolean>(true);
   const { setUser } = useContext(UserContext);
 
   function techRegister(data: IInfoDataRegister) {
@@ -158,6 +161,8 @@ export default function TechsProvider({ children }: ITechsProvider) {
         techStatus,
         setTechStatus,
         techStatusUpdate,
+        effectModal,
+        setEffectModal,
       }}
     >
       {children}

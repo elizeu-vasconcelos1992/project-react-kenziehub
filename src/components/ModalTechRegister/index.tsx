@@ -5,16 +5,23 @@ import { useContext } from "react";
 import { TechsContext } from "../../context/TechsContext";
 
 function ModalTechRegister() {
-  const { setModalRegister } = useContext(TechsContext);
+  const { setModalRegister, effectModal, setEffectModal } =
+    useContext(TechsContext);
 
   return (
-    <Container>
+    <Container effectModal={effectModal}>
       <div className="div-container">
         <div className="div-header">
           <span>Cadastrar Tecnologia</span>
           <AiOutlineCloseCircle
             size={22}
-            onClick={() => setModalRegister(false)}
+            onClick={() => {
+              setEffectModal(false);
+              setTimeout(() => {
+                setModalRegister(false);
+                setEffectModal(true);
+              }, 900);
+            }}
           />
         </div>
         <TechRegisterForm />

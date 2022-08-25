@@ -57,12 +57,15 @@ interface IUserContext {
   logout: () => void;
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
+  effectModal: boolean;
+  setEffectModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext({} as IUserContext);
 
 function UserProvider({ children }: IUserProvider) {
   const navigate = useNavigate();
+  const [effectModal, setEffectModal] = useState<boolean>(true);
   const [user, setUser] = useState<IUser>({} as IUser);
 
   useEffect(() => {
@@ -182,6 +185,8 @@ function UserProvider({ children }: IUserProvider) {
         setUser,
         kenzieApiRegistration,
         logout,
+        effectModal,
+        setEffectModal,
       }}
     >
       {children}
