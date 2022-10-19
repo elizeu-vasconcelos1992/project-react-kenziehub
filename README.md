@@ -5,7 +5,7 @@
 </div>
 <br>
 
-<p style="text-align:justify">O Kenziehub é uma aplicação voltada para pessoas desenvolvedoras, para que possam guardar seu histórico de habilidades e de atuação profissional. O usuário pode visualizar, cadastrar, editar e excluir skills e experiências. Também, a aplicação conta com diversos modais de erro e sucesso com a finalidade de deixar mais fluída sua utilização pelo usuário.</p><br>
+<p style="text-align:justify">O Kenziehub é uma aplicação voltada para pessoas desenvolvedoras, para que possam guardar seu histórico de habilidades e de atuação profissional. O usuário pode visualizar, cadastrar, editar e excluir skills e experiências. Também, a aplicação conta com diversos modais de erro e sucesso com a finalidade de deixar mais fluída sua utilização pelo usuário. Aplicação responsiva.</p><br>
 
 <h1>🔨 RECURSOS</h1>
 
