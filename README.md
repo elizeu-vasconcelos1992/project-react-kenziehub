@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+<h1>💻 KENZIEHUB</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div style="display:flex; justify-content:center">
+<img width="80%" src="./src/assets/kenziehub.gif"/>
+</div>
+<br>
 
-## Available Scripts
+<p style="text-align:justify">O Kenziehub é uma aplicação voltada para pessoas desenvolvedoras, para que possam guardar seu histórico de habilidades e de atuação profissional. O usuário pode visualizar, cadastrar, editar e excluir skills e experiências. Também, a aplicação conta com diversos modais de erro e sucesso com a finalidade de deixar mais fluída sua utilização pelo usuário.</p><br>
 
-In the project directory, you can run:
+<h1>🔨 RECURSOS</h1>
 
-### `yarn start`
+<ul>
+<li><strong>Cadastro:</strong> para utilizar a aplicação é necessário realizar cadastro.</li>
+<li><strong>Login:</strong> o usuário cadastrado pode realizar login.</li>
+<li><strong>Logout:</strong> o usuário cadastrado pode sair da aplicação.</li>
+<li><strong>Perfil:</strong> o usuário logado pode visualizar as tecnologias e experiências cadastradas.</li>
+<li><strong>Cadastro de tecnologias:</strong> o usuário pode cadastrar suas tecnologias.</li>
+<li><strong>Cadastro de experiências:</strong> o usuário pode cadastrar suas experiências profissionais.</li>
+<li><strong>Edição de tecnologias:</strong> o usuário pode editar suas tecnologias.</li>
+<li><strong>Edição de experiências:</strong> o usuário pode editar suas experiências profissionais.</li>
+<li><strong>Alertas:</strong> o usuário é informado, através de modais, se as suas requisições tiveram ou não sucesso.</li>
+</ul><br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h1>🚀 TECNOLOGIAS</h1>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<ul>
+<li>TYPESCRIPT</li>
+<li>JAVASCRIPT</li>
+<li>HTML</li>
+<li>CCS</li>
+<li>REACT</li>
+<li>CONTEXT-API</li>
+<li>REACT-ROUTER-DOM</li>
+<li>CONSUMO DE API REST</li>
+<li>AXIOS</li>
+<li>REACT-HOOK-FORM</li>
+<li>YUP VALIDATION</li>
+<li>TOASTIFY</li>
+<li>FRAME-MOTION</li>
+<li>STYLED-COMPONENTS</li>
 
-### `yarn test`
+</ul><br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h1>🔗 LINK</h1>
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="https://react-entrega-s2-formulario-de-cadastro-elizeu-vasconcelos1992.vercel.app/" target="_blank">LINK PARA O KENZIEHUB</a>
